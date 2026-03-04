@@ -17,7 +17,7 @@ body{
     position:relative;
 }
 
-/* Ultra subtle luxury glow */
+/* Subtle luxury glow */
 .lux-glow{
     position:absolute;
     width:320px;
@@ -41,14 +41,14 @@ body{
     z-index:0;
 }
 
-/* Floating particles */
+/* Floating hearts & flowers */
 .float{
     position:absolute;
     pointer-events:none;
     z-index:1;
     font-size:18px;
     animation:floaty linear infinite;
-    opacity:0.6;
+    opacity:0.65;
     filter:drop-shadow(0 0 6px #ff4da6);
 }
 
@@ -188,11 +188,11 @@ video{
 <div class="lux-glow" style="bottom:8%; right:8%; animation-duration:22s;"></div>
 
 <script>
-// Floating luxury particles
+// Floating hearts & flowers only 💗🌸
 for(let i=0;i<20;i++){
     let el=document.createElement("div");
     el.className="float";
-    el.innerHTML=Math.random()<0.5?"💖":"✨";
+    el.innerHTML = Math.random() < 0.5 ? "💗" : "🌸";
     el.style.left=Math.random()*100+"vw";
     el.style.animationDuration=(8+Math.random()*6)+"s";
     el.style.fontSize=(14+Math.random()*20)+"px";
@@ -203,9 +203,9 @@ for(let i=0;i<20;i++){
 <div class="page cover" id="cover">
     <div class="question blink" id="question">
 Mirror, mirror on the wall…
-Who is the strongest of them all? 💖
+Who is the strongest of them all? 💗
     </div>
-    <p style="color:#ffe6f2;">Tap below to find out ✨</p>
+    <p style="color:#ffe6f2;">Tap below to find out 🌸</p>
     <button id="revealBtn">Reveal 💌</button>
 </div>
 
@@ -214,8 +214,8 @@ Who is the strongest of them all? 💖
     <div class="mirror">
         <video id="video" autoplay playsinline></video>
     </div>
-    <div class="you">YOU 💖</div>
-    <p>The strongest and most beautiful soul ✨</p>
+    <div class="you">YOU 💗</div>
+    <p>The strongest and most beautiful soul 🌸</p>
 </div>
 
 <script>
@@ -233,11 +233,11 @@ function typeWriter(){
 }
 typeWriter();
 
-// Sparkle burst
+// Sparkle burst on click
 function createSparkle(x,y){
     const sparkle=document.createElement("div");
     sparkle.className="sparkle";
-    sparkle.innerHTML="✨";
+    sparkle.innerHTML="💗";
     sparkle.style.left=x+"px";
     sparkle.style.top=y+"px";
     sparkle.style.setProperty("--x",(Math.random()*120-60));
