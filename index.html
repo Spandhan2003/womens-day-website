@@ -12,42 +12,44 @@
 body{
     font-family:'Poppins',sans-serif;
     overflow:hidden;
-    background: radial-gradient(circle at 20% 20%, #1a001a, #000 60%);
+    background: radial-gradient(circle at 20% 20%, #050005 0%, #000 80%);
+    background-color:#000;
     position:relative;
 }
 
-/* Soft luxury glow movement */
+/* Ultra subtle luxury glow */
 .lux-glow{
     position:absolute;
-    width:300px;
-    height:300px;
-    background:radial-gradient(circle, rgba(255,105,180,0.12), transparent 70%);
+    width:320px;
+    height:320px;
+    background:radial-gradient(circle, rgba(255,105,180,0.08), transparent 70%);
     border-radius:50%;
-    animation:moveGlow 15s linear infinite alternate;
+    animation:moveGlow 18s linear infinite alternate;
     z-index:0;
 }
 
 @keyframes moveGlow{
     0%{transform:translate(0,0);}
-    100%{transform:translate(200px,150px);}
+    100%{transform:translate(220px,160px);}
 }
 
 .overlay-bg{
     position:fixed;
     width:100%;
     height:100vh;
-    background:rgba(0,0,0,0.45);
+    background:rgba(0,0,0,0.55);
     z-index:0;
 }
 
+/* Floating particles */
 .float{
     position:absolute;
     pointer-events:none;
     z-index:1;
     font-size:18px;
     animation:floaty linear infinite;
-    opacity:0.7;
-    filter:drop-shadow(0 0 8px #ff69b4);
+    opacity:0.6;
+    filter:drop-shadow(0 0 6px #ff4da6);
 }
 
 @keyframes floaty{
@@ -95,13 +97,13 @@ button{
     padding:10px 24px;
     border:none;
     border-radius:30px;
-    background:#ff4e8b;
+    background:#ff2e88;
     color:white;
     font-weight:bold;
     cursor:pointer;
     font-size:16px;
     transition:.3s;
-    box-shadow:0 0 15px #ff69b4;
+    box-shadow:0 0 15px #ff2e88;
 }
 
 button:hover{
@@ -114,14 +116,14 @@ button:hover{
 .main h2{
     font-size:2rem;
     color:#fff;
-    text-shadow:0 3px 15px #ff69b4;
+    text-shadow:0 3px 15px #ff2e88;
     line-height:1.2em;
 }
 
 .main p{
     margin-top:10px;
     font-size:1rem;
-    color:#ffeef5;
+    color:#ffe6f2;
 }
 
 .mirror{
@@ -129,7 +131,7 @@ button:hover{
     height:300px;
     border-radius:25px;
     border:6px solid #fff;
-    box-shadow:0 0 40px #ff69b4,0 0 60px rgba(255,105,180,0.5);
+    box-shadow:0 0 45px #ff2e88,0 0 70px rgba(255,46,136,0.5);
     overflow:hidden;
     margin:20px 0;
     background:black;
@@ -148,7 +150,7 @@ video{
     font-weight:bold;
     color:#fff;
     margin-top:5px;
-    text-shadow:0 0 15px #ff1493,0 0 30px #ff69b4;
+    text-shadow:0 0 15px #ff1493,0 0 30px #ff2e88;
     animation:pulse 1.5s infinite;
 }
 
@@ -158,6 +160,7 @@ video{
     100%{transform:scale(1)}
 }
 
+/* Click sparkle burst */
 .sparkle{
     position:absolute;
     font-size:18px;
@@ -181,18 +184,18 @@ video{
 <body>
 
 <div class="overlay-bg"></div>
-<div class="lux-glow" style="top:10%; left:10%;"></div>
-<div class="lux-glow" style="bottom:10%; right:10%; animation-duration:18s;"></div>
+<div class="lux-glow" style="top:8%; left:8%;"></div>
+<div class="lux-glow" style="bottom:8%; right:8%; animation-duration:22s;"></div>
 
 <script>
-// floating luxury sparkles
-for(let i=0;i<25;i++){
+// Floating luxury particles
+for(let i=0;i<20;i++){
     let el=document.createElement("div");
     el.className="float";
     el.innerHTML=Math.random()<0.5?"💖":"✨";
     el.style.left=Math.random()*100+"vw";
-    el.style.animationDuration=(6+Math.random()*5)+"s";
-    el.style.fontSize=(15+Math.random()*25)+"px";
+    el.style.animationDuration=(8+Math.random()*6)+"s";
+    el.style.fontSize=(14+Math.random()*20)+"px";
     document.body.appendChild(el);
 }
 </script>
@@ -202,7 +205,7 @@ for(let i=0;i<25;i++){
 Mirror, mirror on the wall…
 Who is the strongest of them all? 💖
     </div>
-    <p style="color:#ffeef5;">Tap below to find out ✨</p>
+    <p style="color:#ffe6f2;">Tap below to find out ✨</p>
     <button id="revealBtn">Reveal 💌</button>
 </div>
 
@@ -230,26 +233,25 @@ function typeWriter(){
 }
 typeWriter();
 
-// Sparkle effect
+// Sparkle burst
 function createSparkle(x,y){
     const sparkle=document.createElement("div");
     sparkle.className="sparkle";
     sparkle.innerHTML="✨";
     sparkle.style.left=x+"px";
     sparkle.style.top=y+"px";
-    sparkle.style.setProperty("--x",(Math.random()*100-50));
-    sparkle.style.setProperty("--y",(Math.random()*-100-50));
+    sparkle.style.setProperty("--x",(Math.random()*120-60));
+    sparkle.style.setProperty("--y",(Math.random()*-120-60));
     document.body.appendChild(sparkle);
     setTimeout(()=>sparkle.remove(),1000);
 }
 
-// Reveal button & camera
 const revealBtn=document.getElementById("revealBtn");
 const cover=document.getElementById("cover");
 const main=document.getElementById("main");
 
 revealBtn.addEventListener("click", async e=>{
-    for(let i=0;i<15;i++) createSparkle(e.clientX,e.clientY);
+    for(let i=0;i<18;i++) createSparkle(e.clientX,e.clientY);
     try{
         const stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:"user"}});
         document.getElementById("video").srcObject=stream;
