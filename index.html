@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Magical Women’s Day 💌</title>
+<title>Magical Women’s Day 👑</title>
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
@@ -17,17 +17,16 @@ body{
     position:relative;
 }
 
-/* Subtle luxury glow */
+/* Soft glow */
 .lux-glow{
     position:absolute;
     width:320px;
     height:320px;
     background:radial-gradient(circle, rgba(255,105,180,0.08), transparent 70%);
     border-radius:50%;
-    animation:moveGlow 18s linear infinite alternate;
+    animation:moveGlow 20s linear infinite alternate;
     z-index:0;
 }
-
 @keyframes moveGlow{
     0%{transform:translate(0,0);}
     100%{transform:translate(220px,160px);}
@@ -37,19 +36,18 @@ body{
     position:fixed;
     width:100%;
     height:100vh;
-    background:rgba(0,0,0,0.55);
+    background:rgba(0,0,0,0.6);
     z-index:0;
 }
 
-/* Floating hearts & flowers */
+/* Floating background elements */
 .float{
     position:absolute;
     pointer-events:none;
     z-index:1;
-    font-size:18px;
     animation:floaty linear infinite;
-    opacity:0.65;
-    filter:drop-shadow(0 0 6px #ff4da6);
+    opacity:0.7;
+    filter:drop-shadow(0 0 8px #ff4da6);
 }
 
 @keyframes floaty{
@@ -75,19 +73,15 @@ body{
     font-family:'Pacifico', cursive;
     color:#fff;
     text-shadow:0 0 20px #ff69b4,0 0 40px #ff1493;
-    max-width:90%;
     white-space:pre-wrap;
     font-size:2rem;
     line-height:1.3em;
-    overflow:hidden;
-    display:block;
 }
 
 .blink{
     border-right:3px solid #fff;
     animation:blink .8s step-end infinite;
 }
-
 @keyframes blink{
     50% { border-color: transparent; }
 }
@@ -101,11 +95,9 @@ button{
     color:white;
     font-weight:bold;
     cursor:pointer;
-    font-size:16px;
     transition:.3s;
-    box-shadow:0 0 15px #ff2e88;
+    box-shadow:0 0 20px #ff2e88;
 }
-
 button:hover{
     transform:scale(1.08);
     background:#ff1493;
@@ -114,16 +106,8 @@ button:hover{
 .hidden{display:none;}
 
 .main h2{
-    font-size:2rem;
     color:#fff;
-    text-shadow:0 3px 15px #ff2e88;
-    line-height:1.2em;
-}
-
-.main p{
-    margin-top:10px;
-    font-size:1rem;
-    color:#ffe6f2;
+    text-shadow:0 0 15px #ff2e88;
 }
 
 .mirror{
@@ -131,7 +115,7 @@ button:hover{
     height:300px;
     border-radius:25px;
     border:6px solid #fff;
-    box-shadow:0 0 45px #ff2e88,0 0 70px rgba(255,46,136,0.5);
+    box-shadow:0 0 50px #ff2e88;
     overflow:hidden;
     margin:20px 0;
     background:black;
@@ -145,39 +129,54 @@ video{
     transform:scaleX(-1);
 }
 
-.you{
-    font-size:26px;
-    font-weight:bold;
-    color:#fff;
-    margin-top:5px;
-    text-shadow:0 0 15px #ff1493,0 0 30px #ff2e88;
-    animation:pulse 1.5s infinite;
+/* Crown animation */
+.crown{
+    font-size:40px;
+    animation:floatCrown 2s ease-in-out infinite;
+    filter:drop-shadow(0 0 10px gold);
 }
 
+@keyframes floatCrown{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-10px);}
+    100%{transform:translateY(0);}
+}
+
+.you{
+    font-size:28px;
+    font-weight:bold;
+    color:#fff;
+    text-shadow:0 0 20px #ff1493;
+    animation:pulse 1.5s infinite;
+}
 @keyframes pulse{
     0%{transform:scale(1)}
     50%{transform:scale(1.08)}
     100%{transform:scale(1)}
 }
 
-/* Click sparkle burst */
+/* Sparkle twinkles near crown */
+.twinkle{
+    position:absolute;
+    font-size:18px;
+    animation:twinkleAnim 1.5s infinite alternate;
+    pointer-events:none;
+}
+@keyframes twinkleAnim{
+    0%{opacity:0.2; transform:scale(0.8);}
+    100%{opacity:1; transform:scale(1.2);}
+}
+
+/* Click burst */
 .sparkle{
     position:absolute;
     font-size:18px;
     pointer-events:none;
-    z-index:3;
     animation:sparkleAnim 1s linear forwards;
 }
-
 @keyframes sparkleAnim{
     0%{opacity:1;transform:translate(0,0) scale(1);}
     100%{opacity:0;transform:translate(calc(var(--x)*1px),calc(var(--y)*1px)) scale(0);}
-}
-
-@media(max-width:480px){
-    .mirror{width:200px;height:240px;}
-    button{padding:8px 20px; font-size:14px;}
-    .question{font-size:1.5rem;}
 }
 </style>
 </head>
@@ -185,17 +184,17 @@ video{
 
 <div class="overlay-bg"></div>
 <div class="lux-glow" style="top:8%; left:8%;"></div>
-<div class="lux-glow" style="bottom:8%; right:8%; animation-duration:22s;"></div>
+<div class="lux-glow" style="bottom:8%; right:8%;"></div>
 
 <script>
-// Floating hearts & flowers only 💗🌸
-for(let i=0;i<20;i++){
+// Floating 💗 🌸 ✨
+for(let i=0;i<25;i++){
     let el=document.createElement("div");
     el.className="float";
-    el.innerHTML = Math.random() < 0.5 ? "💗" : "🌸";
+    el.innerHTML = ["💗","🌸","✨"][Math.floor(Math.random()*3)];
     el.style.left=Math.random()*100+"vw";
-    el.style.animationDuration=(8+Math.random()*6)+"s";
     el.style.fontSize=(14+Math.random()*20)+"px";
+    el.style.animationDuration=(8+Math.random()*6)+"s";
     document.body.appendChild(el);
 }
 </script>
@@ -214,30 +213,36 @@ Who is the strongest of them all? 💗
     <div class="mirror">
         <video id="video" autoplay playsinline></video>
     </div>
+
+    <div class="crown">👑</div>
     <div class="you">YOU 💗</div>
-    <p>The strongest and most beautiful soul 🌸</p>
+    <p style="color:#ffe6f2;">The strongest and most beautiful soul 🌸</p>
+
+    <!-- Twinkles -->
+    <div class="twinkle" style="top:20%; left:45%;">✨</div>
+    <div class="twinkle" style="top:25%; left:55%;">✨</div>
 </div>
 
 <script>
-// Typewriter effect
+// Typewriter
 const questionEl = document.getElementById("question");
 const fullText = questionEl.textContent;
-questionEl.textContent = "";
-let i = 0;
+questionEl.textContent="";
+let i=0;
 function typeWriter(){
-    if(i < fullText.length){
-        questionEl.textContent += fullText[i];
+    if(i<fullText.length){
+        questionEl.textContent+=fullText[i];
         i++;
-        setTimeout(typeWriter, 50);
+        setTimeout(typeWriter,50);
     }
 }
 typeWriter();
 
-// Sparkle burst on click
+// Click sparkle burst
 function createSparkle(x,y){
     const sparkle=document.createElement("div");
     sparkle.className="sparkle";
-    sparkle.innerHTML="💗";
+    sparkle.innerHTML=["💗","✨"][Math.floor(Math.random()*2)];
     sparkle.style.left=x+"px";
     sparkle.style.top=y+"px";
     sparkle.style.setProperty("--x",(Math.random()*120-60));
@@ -251,7 +256,7 @@ const cover=document.getElementById("cover");
 const main=document.getElementById("main");
 
 revealBtn.addEventListener("click", async e=>{
-    for(let i=0;i<18;i++) createSparkle(e.clientX,e.clientY);
+    for(let i=0;i<20;i++) createSparkle(e.clientX,e.clientY);
     try{
         const stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:"user"}});
         document.getElementById("video").srcObject=stream;
